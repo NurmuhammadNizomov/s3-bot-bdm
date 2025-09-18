@@ -6,6 +6,8 @@ const { getUser, addUser, getAllUsers } = require("./models/AuthorizedUser");
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const WEBHOOK_URL = process.env.WEBHOOK_URL;
+const NODE_ENV = process.env.NODE_ENV;
+
 let bot;
 
 if (NODE_ENV === "production") {

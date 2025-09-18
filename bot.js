@@ -5,7 +5,16 @@ const { getUser, addUser, getAllUsers, updateUserFolders } = require("./models/A
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
-const bot = new TelegramBot(BOT_TOKEN, { polling: true });
+let bot;
+
+if (NODE_ENV === "production") {
+  bot = new TelegramBot(BOT_TOKEN, { webHook: true });
+  bot.setWebHook(`${WEBHOOK_URL}`);
+  console.log("✅ Bot webhook rejimida ishlayapti:", WEBHOOK_URL);
+} else {
+  bot = new TelegramBot(BOT_TOKEN, { polling: true });
+  console.log("✅ Bot polling rejimida ishlayapti");
+}
 
 const userState = new Map();
 

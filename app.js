@@ -24,6 +24,14 @@ app.use("/api/folders", authUser, foldersRoute);
 app.get("/", (req, res) => {
   res.send("🚀 API ishlayapti");
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.post(`/bot`, (req, res) => {
+    bot.processUpdate(req.body);
+    res.sendStatus(200);
+  });
+}
+
 (async () => {
   try {
     await initTable();

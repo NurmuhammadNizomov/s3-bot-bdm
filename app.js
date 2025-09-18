@@ -26,7 +26,6 @@ app.get("/", (req, res) => {
 });
 
 // Telegram botni ishga tushiramiz
-require("./bot");
 const bot = require("./bot");
 if (process.env.NODE_ENV === "production") {
   app.post(`/bot`, (req, res) => {

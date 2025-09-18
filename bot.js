@@ -5,6 +5,7 @@ const { getUser, addUser, getAllUsers } = require("./models/AuthorizedUser");
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const WEBHOOK_URL = process.env.WEBHOOK_URL;
 let bot;
 
 if (NODE_ENV === "production") {
@@ -40,7 +41,6 @@ bot.on("message", async (msg) => {
     } else return;
   }
 });
-
 
 // ⏰ Cron (05:00 va 09:00)
 cron.schedule("0 5,9 * * *", async () => {

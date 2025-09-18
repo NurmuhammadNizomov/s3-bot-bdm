@@ -25,6 +25,8 @@ app.get("/", (req, res) => {
   res.send("🚀 API ishlayapti");
 });
 
+const NODE_ENV = process.env.NODE_ENV;
+
 if (process.env.NODE_ENV === "production") {
   app.post(`/bot`, (req, res) => {
     bot.processUpdate(req.body);

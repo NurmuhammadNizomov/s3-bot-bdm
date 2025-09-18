@@ -25,7 +25,9 @@ app.get("/", (req, res) => {
   res.send("🚀 API ishlayapti");
 });
 
-
+// Telegram botni ishga tushiramiz
+require("./bot");
+const bot = require("./bot");
 if (process.env.NODE_ENV === "production") {
   app.post(`/bot`, (req, res) => {
     bot.processUpdate(req.body);
@@ -47,5 +49,3 @@ if (process.env.NODE_ENV === "production") {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Express ${PORT}-portda ishga tushdi`));
 
-// Telegram botni ishga tushiramiz
-require("./bot");
